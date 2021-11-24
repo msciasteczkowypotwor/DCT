@@ -123,7 +123,7 @@ void DCT(double(&input)[8][8], double(&output)[8][8])
                     //std::cout << "sum=" << sum << std::endl;
                 }
             }
-            output[u][v] = sum * alfa(u) * alfa(v);
+            output[u][v] = round(sum * alfa(u) * alfa(v));
         }
     }
 }
@@ -180,7 +180,7 @@ void IDCT2(double(&input)[8][8], double(&output)[8][8])
                     sum = sum + constants::cosines[u][v][x][y] * constants::coefficients[u][v] * input[u][v];
                 }
             }
-            output[x][y] = sum;
+            output[x][y] = round(sum);
         }
     }
 }
