@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include "constants.h"
+#include "Image.h"
 
 double PI = 3.14159265359;
 double sqr2 = 1.41421356237;
@@ -185,14 +186,65 @@ void IDCT2(double(&input)[8][8], double(&output)[8][8])
     }
 }
 int main() {
-
-    DCT(input_matrix, output_matrix);
+    /*PrintMatrix8x8(input_matrix);
+    DCT2(input_matrix, output_matrix);
     PrintMatrix8x8(output_matrix);
     std::cout << std::endl;
     IDCT2(output_matrix, output_matrix2);
     PrintMatrix8x8(output_matrix2);
 
-    std::cout << constants::masterczulki << std::endl;
+    std::cout << constants::masterczulki << std::endl;*/
+   
+    Image test("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
+    Image copy(test);
+
+    int b = copy.channels;
+    printf("ch%d\n", b);
+    b = copy.w;
+    printf("w%d\n", b);
+    b = copy.h;
+    printf("h%d\n", b);
+
+    for (int i = 0; i < copy.w * copy.channels; ++i)
+    {
+        if (i % 24 == 0)
+            printf("\n");
+        copy.data[i]++;
+        int a = copy.data[i];
+        printf("%d, ", a);
+
+    }
+    copy.write("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
+
+     //b = copy.channels;
+    //printf("ch%d\n", b);
+   // test.~Image();
+
+    //Image test2("C:\\Users\\ms\\Desktop\\obrazy\\test.jpg");
+   // Image copy2("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
+
+  /* b = copy2.channels;
+    printf("ch%d\n", b);
+    b = copy2.w;
+    printf("w%d\n", b);
+    b = copy2.h;
+    printf("h%d\n", b);
+   b = test2.channels;
+    printf("ch%d\n", b);
+    b = test2.w;
+    printf("w%d\n", b);
+    b = test2.h;
+    printf("h%d\n", b);*/
+
+    //for (int i = 0; i < test2.w * test2.channels; ++i)
+    //{
+    //   
+    //    
+    //    int a = test2.data[i];
+    //   //int b = test2.data[i];
+    //    printf("%d\n", a);
+
+    //}
 
 }
 
