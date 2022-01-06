@@ -2,6 +2,8 @@
 #include <math.h>
 #include "constants.h"
 #include "Image.h"
+#include "Dtc.h"
+
 
 double PI = 3.14159265359;
 double sqr2 = 1.41421356237;
@@ -194,58 +196,19 @@ int main() {
     PrintMatrix8x8(output_matrix2);
 
     std::cout << constants::masterczulki << std::endl;*/
-   
-    Image test("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
-    Image copy(test);
 
-    int b = copy.channels;
-    printf("ch%d\n", b);
-    b = copy.w;
-    printf("w%d\n", b);
-    b = copy.h;
-    printf("h%d\n", b);
+    Image test("C:\\Users\\ms\\Desktop\\obrazy\\test1.jpg");
+    int* greenArray = test.getGreenArray();
 
-    for (int i = 0; i < copy.w * copy.channels; ++i)
+    for (int i = 0; i < (test.w * test.channels * test.h)/3; ++i)
     {
-        if (i % 24 == 0)
-            printf("\n");
-        copy.data[i]++;
-        int a = copy.data[i];
-        printf("%d, ", a);
-
+        printf("%d, ", greenArray[i]);
     }
-    copy.write("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
+    printf("\n\n\n ");
 
-     //b = copy.channels;
-    //printf("ch%d\n", b);
-   // test.~Image();
+    //test.putGreenArrayIntoData(greenArray);
 
-    //Image test2("C:\\Users\\ms\\Desktop\\obrazy\\test.jpg");
-   // Image copy2("C:\\Users\\ms\\Desktop\\obrazy\\test_copy.jpg");
-
-  /* b = copy2.channels;
-    printf("ch%d\n", b);
-    b = copy2.w;
-    printf("w%d\n", b);
-    b = copy2.h;
-    printf("h%d\n", b);
-   b = test2.channels;
-    printf("ch%d\n", b);
-    b = test2.w;
-    printf("w%d\n", b);
-    b = test2.h;
-    printf("h%d\n", b);*/
-
-    //for (int i = 0; i < test2.w * test2.channels; ++i)
-    //{
-    //   
-    //    
-    //    int a = test2.data[i];
-    //   //int b = test2.data[i];
-    //    printf("%d\n", a);
-
-    //}
+    Dtc dtc(greenArray, test.w, test.h);
+    dtc.printDtc();
 
 }
-
-
