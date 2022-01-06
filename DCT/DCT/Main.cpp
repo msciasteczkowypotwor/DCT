@@ -197,10 +197,17 @@ int main() {
 
     std::cout << constants::masterczulki << std::endl;*/
 
-    Image test("C:\\Users\\ms\\Desktop\\obrazy\\test1.jpg");
+    Image test("C:\\Users\\ms\\Desktop\\obrazy\\test2.jpg");
+    printf("%d, %d, %d, %d  \n", test.h,test.w, test.size, test.channels);
+    for (int i = 0; i < test.w * test.channels * test.h; ++i)
+    {
+        if(i%3==1)
+        printf("%03d, ", test.data[i]);
+    }
+    printf("\n\n\n ");
     int* greenArray = test.getGreenArray();
 
-    for (int i = 0; i < (test.w * test.channels * test.h)/3; ++i)
+    for (int i = 0; i < (test.w * test.h); ++i)
     {
         printf("%d, ", greenArray[i]);
     }
@@ -210,5 +217,5 @@ int main() {
 
     Dtc dtc(greenArray, test.w, test.h);
     dtc.printDtc();
-
+    dtc.writeMessage("abcd");
 }

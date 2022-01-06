@@ -1,2 +1,4 @@
 ﻿  Dtc.cpp
+C:\Users\ms\Desktop\DCT\DCT\DCT\DCT\Dtc.cpp(36,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ms\Desktop\DCT\DCT\DCT\DCT\Dtc.cpp(64): warning C4715: 'Dtc::writeMessage': not all control paths return a value
   DCT.vcxproj -> C:\Users\ms\Desktop\DCT\DCT\DCT\Debug\DCT.exe
